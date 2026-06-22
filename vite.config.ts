@@ -1,17 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// The site deploys to GitHub Pages under https://<user>.github.io/<REPO_NAME>/
-// so Vite needs `base` set to the repository name. Detected from the remote as
-// "Obilireddy". If you fork/rename the repo, update this constant.
-const REPO_NAME = 'Obilireddy';
-
+// Deployed on Netlify, which serves the site from the domain root, so `base`
+// is '/'. (If you ever host under a sub-path — e.g. GitHub Pages at
+// /<repo>/ — set base to `/<repo>/` for the build instead.)
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? `/${REPO_NAME}/` : '/',
+export default defineConfig({
+  base: '/',
   plugins: [react()],
   build: {
     target: 'es2020',
     chunkSizeWarningLimit: 900,
   },
-}));
+});

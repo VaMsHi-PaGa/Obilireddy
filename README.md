@@ -71,23 +71,23 @@ src/
   store/       # windowStore (window manager) + systemStore (phase/theme)
   data/        # resume.ts — single source of truth
   hooks/       # media query, clock, reduced-motion
-public/        # resume.pdf, .nojekyll
+public/        # resume.pdf
 ```
 
-## 🌐 Deploying to GitHub Pages
+## 🌐 Deploying to Netlify
 
-A workflow at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and
-deploys to GitHub Pages on every push to `main`.
+This site is configured for **Netlify**. Build settings live in
+[`netlify.toml`](netlify.toml) (build command `npm run build`, publish directory
+`dist`, Node 20, and an SPA redirect).
 
-1. Push this repo to GitHub (default branch `main`).
-2. In the repo, go to **Settings → Pages → Build and deployment**, and set
-   **Source = GitHub Actions**.
-3. Push to `main` (or run the workflow manually from the **Actions** tab).
-4. The site publishes at `https://<your-user>.github.io/Obilireddy/`.
+1. In Netlify, **Add new site → Import an existing project** and connect this
+   GitHub repo (or drag-and-drop the `dist/` folder for a manual deploy).
+2. Netlify reads `netlify.toml` automatically — no manual build settings needed.
+3. Every push to the production branch redeploys.
 
-> **Base path:** Vite's `base` is set to `/Obilireddy/` in
-> [`vite.config.ts`](vite.config.ts) (the repo name). If you fork or rename the repo,
-> update the `REPO_NAME` constant there.
+> **Base path:** Vite's `base` is `/` (Netlify serves from the domain root).
+> If you ever host under a sub-path instead — e.g. GitHub Pages at `/<repo>/` —
+> set `base` to `/<repo>/` in [`vite.config.ts`](vite.config.ts).
 
 ## 📄 License
 
