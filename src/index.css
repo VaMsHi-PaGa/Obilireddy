@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Visible focus states for keyboard users */
+  :focus-visible {
+    outline: 2px solid theme('colors.accent.DEFAULT');
+    outline-offset: 1px;
+  }
+}
+
+@layer utilities {
+  /* Thin, Fluent-style scrollbars */
+  .overflow-auto,
+  .overflow-y-auto {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120, 120, 120, 0.5) transparent;
+  }
+  .overflow-auto::-webkit-scrollbar,
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .overflow-auto::-webkit-scrollbar-thumb,
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background-color: rgba(120, 120, 120, 0.45);
+    border-radius: 9999px;
+  }
+  .overflow-auto::-webkit-scrollbar-track,
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* react-rnd resize handles shouldn't show default styling glitches */
+.react-draggable-transparent-selection {
+  user-select: none;
+}
