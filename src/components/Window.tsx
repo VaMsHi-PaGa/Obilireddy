@@ -44,6 +44,9 @@ export default function Window({ meta }: { meta: AppMeta }) {
       style={{
         zIndex: win.z,
         display: win.minimized ? 'none' : 'flex',
+        // Re-enable pointer events (the parent window layer disables them so
+        // empty desktop areas pass clicks through to the desktop icons).
+        pointerEvents: 'auto',
       }}
       onDragStart={() => {
         focusWindow(meta.id);

@@ -33,8 +33,9 @@ export default function Desktop() {
       <Wallpaper />
       <DesktopIcons />
 
-      {/* Window layer */}
-      <div className="absolute inset-0 bottom-12">
+      {/* Window layer — pointer-events-none so empty areas don't block the
+          desktop icons beneath; each window re-enables pointer events. */}
+      <div className="pointer-events-none absolute inset-0 bottom-12">
         {apps.map((app) => (
           <Window key={app.id} meta={app} />
         ))}
